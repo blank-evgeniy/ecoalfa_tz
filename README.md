@@ -1,50 +1,23 @@
-# React + TypeScript + Vite
+### Тестовое задание для стажировке в "Экосистема Альфа"
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Dev tools:
 
-Currently, two official plugins are available:
+1. Vite
+2. React
+3. TypeScript
+4. Redux Toolkit
+5. RTK Query
+6. React router dom
+7. Tailwind
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Api: <a href='https://fakestoreapi.com/'>fakestoreapi</a>
 
-## Expanding the ESLint configuration
+## Описание проекта:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+SPA со списком карточек товаров, получаем с сервера при помощи RTK Query, со следующим функционалом:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. Добавление товаров в избранные
+2. Удаление товаров
+3. Роутинг между списком и страницами каждого товара
+4. Фильтр товаров по наличию лайка
+5. Сокращение контента карточки товара для единой высоты карточек
