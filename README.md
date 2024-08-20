@@ -1,5 +1,7 @@
 ### Тестовое задание для стажировке в "Экосистема Альфа"
 
+##Deploy: https://blank-evgeniy.github.io/ecoalfa_tz/
+
 ## Dev tools:
 
 1. Vite
