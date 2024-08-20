@@ -5,16 +5,13 @@ import { Link } from 'react-router-dom';
 import { storeSlice } from '../store/reducers/storeSlice';
 import { useAppDispatch } from '../hooks/reduxHooks';
 
-type CardProps = Item;
+interface CardProps {
+    data: Item;
+    favorite: boolean;
+}
 
-const Card: React.FC<CardProps> = ({
-    id,
-    title,
-    description,
-    price,
-    image,
-}) => {
-    const [isFavorite, setIsFavorite] = useState(false);
+const Card: React.FC<CardProps> = ({ data, favorite }) => {
+    const [isFavorite, setIsFavorite] = useState(favorite);
 
     const { addFavorite, removeFavorite, deleteItem } = storeSlice.actions;
     const dispatch = useAppDispatch();
@@ -24,10 +21,10 @@ const Card: React.FC<CardProps> = ({
         event.stopPropagation();
 
         if (isFavorite) {
-            dispatch(removeFavorite(id));
+            dispatch(removeFavorite(data.id));
             setIsFavorite((prev) => !prev);
         } else {
-            dispatch(addFavorite(id));
+            dispatch(addFavorite(data.id));
             setIsFavorite((prev) => !prev);
         }
     };
@@ -35,29 +32,31 @@ const Card: React.FC<CardProps> = ({
     const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         event.stopPropagation();
-        dispatch(deleteItem(id));
+        dispatch(deleteItem(data.id));
     };
 
     return (
         <div className="mx-auto w-full max-w-[280px] rounded-lg border border-gray-200 bg-white shadow">
-            <Link to={`/${id}`}>
+            <Link to={`/${data.id}`}>
                 <img
                     className="mx-auto h-[300px] object-contain"
-                    src={image}
+                    src={data.image}
                     alt="product image"
                 />
 
                 <div className="px-5 pb-5">
                     <div className="line-clamp-5">
                         <h5 className="text-md font-semibold tracking-tight text-gray-900">
-                            {title}
+                            {data.title}
                         </h5>
-                        <p className="text-md text-gray-900">{description}</p>
+                        <p className="text-md text-gray-900">
+                            {data.description}
+                        </p>
                     </div>
 
                     <div className="flex items-center justify-between pt-4">
                         <span className="text-3xl font-bold text-gray-900">
-                            ${price}
+                            ${data.price}
                         </span>
                         <button
                             onClick={handleDelete}

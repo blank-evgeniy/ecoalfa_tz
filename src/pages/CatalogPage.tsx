@@ -41,7 +41,11 @@ const CatalogPage = () => {
             {filteredData && filteredData.length > 0 ? (
                 <div className="flex flex-wrap gap-4">
                     {filteredData.map((item) => (
-                        <Card key={item.id} {...item} />
+                        <Card
+                            key={item.id}
+                            data={item}
+                            favorite={favorites.includes(item.id)}
+                        />
                     ))}
                 </div>
             ) : (
