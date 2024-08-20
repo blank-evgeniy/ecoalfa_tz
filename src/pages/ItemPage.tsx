@@ -57,7 +57,7 @@ const ItemPage = () => {
                 <>
                     <div className="block gap-4 pt-8 sm:flex">
                         <img
-                            className="max-h-[500px] rounded-xl object-contain shadow-lg"
+                            className="max-h-[500px] rounded-xl bg-white object-contain shadow-lg sm:w-[50%]"
                             src={data?.image}
                         />
                         <div className="flex flex-col justify-between">
@@ -72,11 +72,13 @@ const ItemPage = () => {
                                 <span className="text-3xl font-bold text-gray-900">
                                     ${data.price}
                                 </span>
-                                <DeleteButton onClick={handleDelete} />
-                                <LikeButton
-                                    onClick={handleToFavorite}
-                                    isActive={isFavorite}
-                                />
+                                <div className="flex gap-8">
+                                    <DeleteButton onClick={handleDelete} />
+                                    <LikeButton
+                                        onClick={handleToFavorite}
+                                        isActive={isFavorite}
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>

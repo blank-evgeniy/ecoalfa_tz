@@ -44,7 +44,7 @@ const CatalogPage = () => {
                 </button>
             </div>
             {filteredData && filteredData.length > 0 ? (
-                <div className="flex flex-wrap gap-4">
+                <div className="block gap-4 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     {filteredData.map((item) => (
                         <Card
                             key={item.id}
