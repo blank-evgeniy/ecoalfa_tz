@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface StoreState {
-    favorites: string[];
-    deleted: string[];
+    favorites: number[];
+    deleted: number[];
 }
 
 const initialState: StoreState = {
@@ -14,15 +14,15 @@ export const storeSlice = createSlice({
     name: 'games',
     initialState,
     reducers: {
-        addFavorite(state, action: PayloadAction<string>) {
+        addFavorite(state, action: PayloadAction<number>) {
             state.favorites.push(action.payload);
         },
-        removeFavorite(state, action: PayloadAction<string>) {
+        removeFavorite(state, action: PayloadAction<number>) {
             state.favorites = state.favorites.filter(
-                (f: string) => f !== action.payload
+                (f: number) => f !== action.payload
             );
         },
-        deleteItem(state, action: PayloadAction<string>) {
+        deleteItem(state, action: PayloadAction<number>) {
             state.deleted.push(action.payload);
         },
     },
