@@ -4,6 +4,8 @@ interface DeleteButtonProps {
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
+//кнопка удаления товара
+
 const DeleteButton: React.FC<DeleteButtonProps> = ({ onClick }) => {
     return (
         <button

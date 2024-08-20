@@ -2,7 +2,10 @@ import { useState } from 'react';
 import Card from '../components/Card';
 import { useAppSelector } from '../hooks/reduxHooks';
 import { storeApi } from '../store/reducers/storeApi';
+import Loading from '../components/Loading';
+import ErrorMessage from '../components/ErrorMessage';
 
+//лимит на получение данных с сервера
 const ITEMS_LIMIT = 20;
 
 const CatalogPage = () => {
@@ -13,6 +16,8 @@ const CatalogPage = () => {
     const { data, error, isLoading } =
         storeApi.useFetchAllItemsQuery(ITEMS_LIMIT);
 
+    //фильтруем полученные товары, скрывая удаленные и при
+    //активном фильтре показывая только товары с лайком
     const filteredData = !isLikeFilter
         ? data?.filter((item) => !deleted.includes(item.id))
         : data?.filter(
@@ -24,9 +29,9 @@ const CatalogPage = () => {
         setIsLikeFilter((prev) => !prev);
     };
 
-    if (isLoading) return <div className="mx-auto max-w-[1200px]">Loading</div>;
+    if (isLoading) return <Loading />;
 
-    if (error) return <div className="mx-auto max-w-[1200px]">Error</div>;
+    if (error) return <ErrorMessage />;
 
     return (
         <div className="mx-auto max-w-[1200px]">

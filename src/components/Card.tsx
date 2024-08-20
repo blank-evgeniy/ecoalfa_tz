@@ -19,9 +19,11 @@ const Card: React.FC<CardProps> = ({ data, favorite }) => {
     const dispatch = useAppDispatch();
 
     const handleToFavorite = (event: React.MouseEvent<HTMLButtonElement>) => {
+        //отменяем переход по ссылке(вся карточка ссылка)
         event.preventDefault();
         event.stopPropagation();
 
+        //в зависимости от значения лайка удаляем/добавляем товар в избранные
         if (isFavorite) {
             dispatch(removeFavorite(data.id));
             setIsFavorite((prev) => !prev);
@@ -32,6 +34,7 @@ const Card: React.FC<CardProps> = ({ data, favorite }) => {
     };
 
     const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
+        //отменяем переход по ссылке(вся карточка ссылка)
         event.preventDefault();
         event.stopPropagation();
         dispatch(deleteItem(data.id));

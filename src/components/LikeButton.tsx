@@ -5,6 +5,7 @@ interface LikeButtonProps {
     isActive: boolean;
 }
 
+//кнопка лайка
 const LikeButton: React.FC<LikeButtonProps> = ({ onClick, isActive }) => {
     return (
         <button

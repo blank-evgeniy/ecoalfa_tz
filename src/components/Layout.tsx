@@ -18,7 +18,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     </Link>
                 </nav>
             </header>
-            <main className="min-h-[calc(100vh-60px-100px)] bg-orange-100 p-4">
+            <main className="relative min-h-[calc(100vh-60px-100px)] bg-orange-100 p-4">
                 {children}
             </main>
             <footer className="h-[100px] bg-orange-300 p-2">

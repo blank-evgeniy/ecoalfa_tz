@@ -5,6 +5,8 @@ import { storeSlice } from '../store/reducers/storeSlice';
 import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
 import DeleteButton from '../components/DeleteButton';
 import LikeButton from '../components/LikeButton';
+import Loading from '../components/Loading';
+import ErrorMessage from '../components/ErrorMessage';
 
 const ItemPage = () => {
     const navigate = useNavigate();
@@ -21,10 +23,12 @@ const ItemPage = () => {
     );
 
     useEffect(() => {
+        //обновляем значение лайка в зависимости от того, есть ли id товара в избранных из стора
         if (data) setIsFavorite(favorites.includes(data.id));
     }, [favorites, data]);
 
     const handleToFavorite = () => {
+        //в зависимости от значения лайка удаляем/добавляем товар в избранные
         if (isFavorite) {
             dispatch(removeFavorite(data!.id));
         } else {
@@ -37,9 +41,9 @@ const ItemPage = () => {
         navigate('/');
     };
 
-    if (isLoading) return <div className="mx-auto max-w-[1200px]">Loading</div>;
+    if (isLoading) return <Loading />;
 
-    if (error) return <div className="mx-auto max-w-[1200px]">Error</div>;
+    if (error) return <ErrorMessage />;
 
     return (
         <div className="mx-auto max-w-[1200px] pt-8">
